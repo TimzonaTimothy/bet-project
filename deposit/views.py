@@ -11,12 +11,7 @@ from website.models import *
 import json
 # Create your views here.
 
-def render_to_json(request, data):
-    return HttpResponse(
-        json.dumps(data, ensure_ascii=False),
-        mimetype=request.is_ajax() and "application/json" or "text/html"
-    )
-
+@login_required(login_url='login')
 def deposit(request):
     
     if request.is_ajax():
@@ -38,8 +33,10 @@ def deposit(request):
                  
                  
                 return JsonResponse({'deposited':deposited})
-                
 
+       
+                
+@login_required(login_url='login')
 def deposit_complete(request):
     ref = request.GET.get('ref')
     try:
