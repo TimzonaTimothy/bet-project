@@ -1,0 +1,30 @@
+{% load static %}
+{% load humanize %}
+<div class="col-xl-3 col-lg-4 col-md-6">
+    <div class="dashboard-sidebar">
+        <div class="single-item">
+            <img src="{% static 'assets/images/profile-img-1.png' %}" alt="images">
+            <h5>{{user.email}}</h5>
+            <p></p>
+        </div>
+        <div class="balance">
+            <div class="single-item">
+                <img src="{% static 'assets/images/icon/dashboard-sidebar-icon-1.png' %}" alt="images">
+                <h5>₦{{ user.balance|floatformat:2|intcomma }}</h5>
+                <p>Available Balance</p>
+            </div>
+            <div class="bottom-area d-flex align-items-center justify-content-between">
+                <a href="javascript:void(0)" class="mdr withdraw-btn">Withdraw</a>
+                <a href="javascript:void(0)" class="mdr deposit-btn">Deposit</a>
+            </div>
+        </div>
+        <div class="single-item">
+            <img src="{% static 'assets/images/icon/dashboard-sidebar-icon-2.png' %}" alt="images">
+            <h5>Need Help?</h5>
+            <p class="mdr">Have questions? Our experts are here to help!.</p>
+            <span class="btn-border">
+                <a href="contact.html" class="cmn-btn">Get Start Now</a>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+{% load static %}
+
+
+<div class="tab-pane fade" id="affiliate" role="tabpanel" aria-labelledby="affiliate-tab">
+    <div class="affiliate-tab">
+        <div class="row">
+            <div class="col-12">
+                <h5>Affiliate Program</h5>
+                <p>Get a lifetime reward up to 15% for inviting new people!</p>
+                <div class="referral-bar">
+                    <p>My Referral Link</p>
+                    <div class="input-area">
+                        <input type="text" value="{{user.code}}">
+                        <img src="{% static 'assets/images/icon/copy-icon.png' %}" alt="icon">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="single-info">
+                            <img src="{% static 'assets/images/icon/earned-referral-icon-1.png' %}"
+                                alt="icon">
+                            <div class="text-area">
+                                <h4>$2956.00</h4>
+                                <p class="mdr">Earned Referral</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="single-info">
+                            <img src="{% static 'assets/images/icon/earned-referral-icon-2.png' %}"
+                                alt="icon">
+                            <div class="text-area">
+                                <h4>$208.00</h4>
+                                <p class="mdr">Last Month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-area">
+                    <div class="head-area d-flex justify-content-between align-items-center">
+                        <h5>Referral History</h5>
+                        <div class="input-area d-flex align-items-center">
+                            <input type="text" id="dateSelect"
+                                placeholder="015/08/2020 - 025/01/2021">
+                            <img src="{% static 'assets/images/icon/date-icon.png' %}"
+                                class="max-un" alt="icon">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Earned</th>
+                                    <th scope="col">E-mail</th>
+                                </tr>
+                            </thead>
+                            {% for profiles in profile %}
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{{profiles.date_joined}}</th>
+                                    <td>{{profiles.username}}</td>
+                                    <td>0.000BTC</td>
+                                    <td>{{profiles}}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

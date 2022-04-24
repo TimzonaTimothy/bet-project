@@ -1,0 +1,42 @@
+{% load static %}
+
+
+<div class="tab-pane fade " id="setting" role="tabpanel" aria-labelledby="setting-tab">
+    <div class="setting-tab">
+        <div class="setting-personal-details">
+            <h5>KYC Personal Details</h5>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-input">
+                        <label for="perFname">First Name:</label>
+                        <h5 class="pt-3">{{user.first_name}}</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input">
+                        <label for="perLname">Last Name:</label>
+                        <h5 class="pt-3">{{user.last_name}}</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input">
+                        <label for="perLname">Username:</label>
+                        <h5 class="pt-3">{{user.username}}</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input">
+                        <label for="perLname">Email:</label>
+                        <h5 class="pt-3">{{user}}</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input">
+                        <label for="phone">Phone:</label>
+                        <h5 class="pt-3">{{user.phone_number}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+{% load static %}
+
+<div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+    <div class="transactions-tab">
+        <div class="head-area">
+            <form action="#">
+                <div class="single-input">
+                    <label>Month</label>
+                    <select>
+                        <option value="1">2021/01</option>
+                        <option value="2">2021/02</option>
+                        <option value="3">2021/03</option>
+                        <option value="4">2021/04</option>
+                    </select>
+                </div>
+                <div class="single-input">
+                    <label>Type</label>
+                    <select>
+                        <option value="1">Type 1</option>
+                        <option value="2">Type 2</option>
+                        <option value="3">Type 3</option>
+                        <option value="4">Type 4</option>
+                    </select>
+                </div>
+                <div class="single-input">
+                    <label>Currency</label>
+                    <select>
+                        <option value="1">Currency 1</option>
+                        <option value="2">Currency 2</option>
+                        <option value="3">Currency 3</option>
+                        <option value="4">Currency 4</option>
+                    </select>
+                </div>
+                <div class="text-end">
+                    <button>Filter</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Deposit</td>
+                        <td>BTC</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-1.png' %}"
+                                alt="icon">
+                            0.00016556
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Withdrawal</td>
+                        <td>BTC</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-1.png' %}"
+                                alt="icon">
+                            0.00016556
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Refer com.</td>
+                        <td>USDT</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-2.png' %}"
+                                alt="icon">
+                            13.1072000
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Withdrawal</td>
+                        <td>BTC</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-1.png' %}"
+                                alt="icon">
+                            0.00016556
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Deposit</td>
+                        <td>TRX</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-3.png' %}"
+                                alt="icon">
+                            368.033428
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2021-01-07 16:33:53</th>
+                        <td>Refer com.</td>
+                        <td>BTC</td>
+                        <td>
+                            <img src="{% static 'assets/images/icon/dashboard-coin-icon-1.png' %}"
+                                alt="icon">
+                            0.00016556
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

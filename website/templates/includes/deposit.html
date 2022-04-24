@@ -1,0 +1,145 @@
+{% load static %}
+
+
+
+
+<div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit-tab">
+    <div class="deposit-with-tab">
+        <div class="row">
+            <!-- <div class="col-xxl-4 col-xl-5">
+                <div class="balance-area">
+                    <div class="head-area d-flex align-items-center justify-content-between">
+                        <p class="mdr">Current Balance</p>
+                        <select>
+                            <option value="1">BTC</option>
+                            <option value="2">ETH</option>
+                            <option value="3">LTC</option>
+                        </select>
+                    </div>
+                    <h6>0.1018183873 <span>BTC</span></h6>
+                    <p class="mdr">1BTC = 49,345.50 USD</p>
+                </div>
+            </div> -->
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+            <div class="col-xxl-8 col-xl-7">
+                <div class="right-area">
+                   
+                    <h5>Deposit</h5>
+                    
+                    <p class="para-area"></p>
+                    <div class="address-bar">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="input-single">
+                                <label>Amount</label>
+                                <div class="input-area">
+                                    <input type="number" id="deposit_amount" name="deposit_amount" placeholder="Enter Amount" required>
+                                </div>
+                            </div>
+                            <!-- <div class="input-single">
+                                <label>Email</label>
+                                <div class="input-area">
+                                    <input type="email" name="deposit_email" value="{{ user.email }}" readonly>
+                                </div>
+                            </div> -->
+                            <span class="btn-border" style="cursor: pointer;">
+                                <a  onclick="payWithPayStack()" class="cmn-btn">Deposit</a>
+                            </span>
+                        </form>
+                        
+                    </div>
+                    <div class="bottom-area">
+                        <div class="single-item">
+                            <h6>Transaction fee:</h6>
+                            <p>Your withdrawal will also have 0.0006 BTC subtracted to cover
+                                the transaction fee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const getCookie = (name) => {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+
+    function payWithPayStack(){
+        let redirect_url = "{% url 'deposit_detail' %}";
+        let user = "{{user.email}}";
+        let currency = "NGN";
+        let plan = "";
+        let ref = "{{user.id}}"+Math.floor((Math.random() * 1000000000) + 1 );
+        let amount = document.getElementById('deposit_amount').value;
+
+
+        
+
+
+        let obj = {
+            
+            key: "pk_test_14162cb89ec6e813cf664044d2cf5a44f5b40255",
+            email: '{{ user.email }}',
+            amount: document.getElementById('deposit_amount').value * 100 ,
+            ref: ref,
+            callback: function(response){
+                
+                
+                $.ajax({
+                    type: 'POST',
+                    url: "/deposit/",
+                    data: {
+                        'csrfmiddlewaretoken': csrftoken,
+                        'amount': amount,
+                        'ref': ref,
+                        'user': user,
+                    },
+                    success: function(response){
+                        console.log(response);
+                        // location.reload();
+                        window.location.href = redirect_url + '?ref='+ref;
+                      
+
+                    },
+                    error: function(error){
+                        console.log(error);
+                        
+                    }
+                })
+            }
+        }
+        if (Boolean(currency)){
+            obj.currency = currency.toUpperCase()
+        }
+        if (Boolean(plan)){
+            obj.plan - plan;
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+    
+</script>
+
+
+<script>setTimeout(function(){
+    $('#ajax_message').fadeOut('slow');
+    }, 6000);</script>
+    
